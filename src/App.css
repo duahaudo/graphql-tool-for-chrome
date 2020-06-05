@@ -1,38 +1,63 @@
+*:focus {
+  outline: none;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.main-work-space {
+  flex-grow: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.setting {
+  padding: 10px;
+  display: flex;
+  background: darkgrey;
+}
+
+.setting input {
+  margin: 0 5px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  color: #002748;
+  font-size: 15px;
+  line-height: 16px;
+  padding: 13px 16px;
+  border: 0.5px solid rgba(164, 173, 186, 0.24);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-transition: border-color 0.2s;
+  transition: border-color 0.2s;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #a4adba;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #a4adba;
+}
+
+.form-control:-moz-placeholder,
+.form-control::-moz-placeholder {
+  color: #a4adba;
+  opacity: 1;
+}
+
+.form-control:focus {
+  border-color: #0080ff;
+  caret-color: #0080ff;
+}
+
+.setting input:focus {
+  border-color: #349de3;
+  outline: none;
 }
