@@ -19,9 +19,5 @@
     "48": "icons/logo.png",
     "128": "icons/logo.png"
   },
-  "permissions": [
-    "http://*/",
-    "https://*/",
-    "storage"
-  ]
+  "permissions": []
 }
