@@ -19,5 +19,9 @@
     "48": "icons/logo.png",
     "128": "icons/logo.png"
   },
-  "permissions": []
+  "permissions": [
+    "tabs",
+    "http://*/",
+    "https://*/"
+  ]
 }

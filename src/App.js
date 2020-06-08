@@ -1,17 +1,20 @@
 import "graphiql/graphiql.css"
 import "./App.css"
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 // import GraphiQL from '../vendor/graphiql';
 import GraphiQL from 'graphiql';
 import fetch from 'isomorphic-fetch';
 
 export default () => {
 
-  const [api, setApi] = useState("https://api.skedulo.com/graphql/graphql")
-  const [token, setToken] = useState("")
+  const skedToken = useMemo(() => window.location.search ? window.location.search.substr(1) : "", [])
+
+  const [api, setApi] = useState(skedToken ? "https://api.skedulo.com/graphql/graphql" : '')
+  const [token, setToken] = useState(skedToken)
 
   const graphQLFetcher = useCallback((graphQLParams) => {
+
     return fetch(api, {
       method: 'post',
       headers: {
