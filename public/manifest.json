@@ -20,8 +20,6 @@
     "128": "icons/logo.png"
   },
   "permissions": [
-    "tabs",
-    "http://*/",
-    "https://*/"
+    "https://*.skedulo.com/"
   ]
 }
