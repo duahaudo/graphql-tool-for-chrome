@@ -15,7 +15,8 @@ const openNewTab = () => {
             chrome.tabs.executeScript(tab.id, { code: `localStorage['auth']` }, ([fromPageLocalStore]) => {
                 const skedApiAccessToken = JSON.parse(fromPageLocalStore).skedApiAccessToken;
                 chrome.tabs.create({ url: `index.html?` + skedApiAccessToken, active: true }, (newTab) => {
-                    chrome.tabs.executeScript(newTab.id, { code: `localStorage.setItem('auth', "${skedApiAccessToken}")` })
+                    // const code = `localStorage.setItem('skedToken', "${skedApiAccessToken}")`
+                    // chrome.tabs.executeScript(newTab.id, { code })
                 })
             });
         } else {
