@@ -1,31 +1,4 @@
-export default `# Keyboard shortcuts:
-#
-#  Prettify Query:  Shift-Ctrl-P (or press the prettify button above)
-#     Merge Query:  Shift-Ctrl-M (or press the merge button above)
-#       Run Query:  Ctrl-Enter (or press the play button above)
-#   Auto Complete:  Ctrl-Space (or just start typing)
-#
-
-query asyncJob {
-  asyncJob(filter: "Type == 'ClientDetailForm'") {
-    edges {
-      node {
-        UID
-        Name
-        Param1
-        Title
-        Type
-      }
-    }
-  }
-}
-mutation insertAssyncJob {
-  schema {
-    insertAsyncJob(input: {
-      Status: "Active",
-      Type:"ClientDetailForm",
-      Title:"ClientDetailFormSettings",
-      Param1: "${JSON.stringify([
+const param1 = JSON.stringify([
   {
     "name": "CaseNote",
     "title": "Case Notes",
@@ -110,36 +83,83 @@ mutation insertAssyncJob {
       "remove": false
     }
   }
-]).replace(/"/g, '\\"')}"
-    })
-  }
-}
+]).replace(/"/g, '\\"');
 
-query setting {
-  skedCustomFormFieldSetting(filter: "Category == 'BillableTravelForm'") {
-    edges {
-      node {
-        Name
-      }
-    }
-  }
-}
-mutation insertSetting {
-  schema {
-    i1: insertSkedCustomFormFieldSetting(input: {
-      Name: "Additional_Travel_Costs",
-      Category: "BillableTravelForm",
-      IsVisible: true,
-      IsEditable: false,
-      IsRequired: false
-    })
-    i2: insertSkedCustomFormFieldSetting(input: {
-      Name: "Additional_Transport_Costs",
-      Category: "BillableTravelForm",
-      IsVisible: true,
-      IsEditable: false,
-      IsRequired: false
-    })
-  }
-}
-`
+export default `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Keyboard shortcuts:
+#
+#  Prettify Query:  Shift-Ctrl-P (or press the prettify button above)
+#     Merge Query:  Shift-Ctrl-M (or press the merge button above)
+#       Run Query:  Ctrl-Enter (or press the play button above)
+#   Auto Complete:  Ctrl-Space (or just start typing)
+#
+
+# query asyncJob {
+#   asyncJob(filter: "Type == 'ClientDetailForm'") {
+#     edges {
+#       node {
+#         UID
+#         Name
+#         Param1
+#         Title
+#         Type
+#       }
+#     }
+#   }
+# }
+# mutation insertAssyncJob {
+#   schema {
+#     insertAsyncJob(input: {
+#       Status: "Active",
+#       Type:"ClientDetailForm",
+#       Title:"ClientDetailFormSettings",
+#       Param1: "${param1}"
+#     })
+#   }
+# }
+
+# query setting {
+#   skedCustomFormFieldSetting(filter: "Category == 'BillableTravelForm'") {
+#     edges {
+#       node {
+#         Name
+#         DefaultValue
+#       }
+#     }
+#   }
+# }
+# mutation insertSetting {
+#   schema {
+#     i1: insertSkedCustomFormFieldSetting(input: {
+#       Name: "Additional_Travel_Costs",
+#       Category: "BillableTravelForm",
+#       IsVisible: true,
+#       IsEditable: false,
+#       IsRequired: false
+#     })
+#     i2: insertSkedCustomFormFieldSetting(input: {
+#       Name: "Additional_Transport_Costs",
+#       Category: "BillableTravelForm",
+#       IsVisible: true,
+#       IsEditable: false,
+#       IsRequired: false
+#     })
+#   }
+# }
+# `
