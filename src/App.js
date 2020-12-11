@@ -1,5 +1,6 @@
 import "graphiql/graphiql.css"
 import "./App.css"
+import query from "./defaultQuery"
 
 import React, { useState, useCallback, useMemo } from 'react';
 // import GraphiQL from '../vendor/graphiql';
@@ -33,7 +34,7 @@ export default () => {
       </div>
 
       <div className="main-work-space">
-        <GraphiQL fetcher={graphQLFetcher} />
+        <GraphiQL fetcher={graphQLFetcher} query={query} />
       </div>
     </div>
   );
