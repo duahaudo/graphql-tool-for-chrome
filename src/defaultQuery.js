@@ -85,8 +85,34 @@ const param1 = JSON.stringify([
   }
 ]).replace(/"/g, '\\"');
 
-export default `
+export const query = `
 
+query job($filterJob: EQLQueryFilterJobs) {
+  jobs(filter: $filterJob) {
+    edges {
+      node {
+        UID
+        Name
+        Start
+        End
+        JobStatus
+        JobAllocations {
+          UID
+          Name
+          Status
+          Start
+          End
+          Resource {
+            UID
+            Name
+            Category
+            IsActive
+          }
+        }
+      }
+    }
+  }
+}
 
 
 
@@ -135,55 +161,59 @@ export default `
 # }
 
 # query setting {
-  #   skedCustomFormFieldSetting(filter: "Category == 'BillableTravelForm'") {
-  #     edges {
-  #       node {
-  #         Name
-  #         DefaultValue
-  #         IsVisible
-  #         IsEditable
-  #         IsRequired
-  #       }
-  #     }
-  #   }
-  # }
-  # mutation insertSetting {
-  #   schema {
-  #     i1: insertSkedCustomFormFieldSetting(input: {
-  #       Name: "Additional_Travel_Costs",
-  #       Category: "BillableTravelForm",
-  #       IsVisible: true,
-  #       IsEditable: false,
-  #       IsRequired: false
-  #     })
-  #     i2: insertSkedCustomFormFieldSetting(input: {
-  #       Name: "Additional_Transport_Costs",
-  #       Category: "BillableTravelForm",
-  #       IsVisible: true,
-  #       IsEditable: false,
-  #       IsRequired: false
-  #     })
-  #     i3: insertSkedCustomFormFieldSetting(input: {
-  #       Name: "TFA_Actual_Travel_Distance__c",
-  #       Category: "BillableTravelForm",
-  #       IsVisible: true,
-  #       IsEditable: false,
-  #       IsRequired: false
-  #     })
-  #     i4: insertSkedCustomFormFieldSetting(input: {
-  #       Name: "TFA_Actual_Travel_Duration__c",
-  #       Category: "BillableTravelForm",
-  #       IsVisible: true,
-  #       IsEditable: false,
-  #       IsRequired: false
-  #     })
-  #     i5: insertSkedCustomFormFieldSetting(input: {
-  #       Name: "TFA_Additional_Costs__c",
-  #       Category: "BillableTravelForm",
-  #       IsVisible: true,
-  #       IsEditable: false,
-  #       IsRequired: false
-  #     })
-  #   }
-  # }
-  `
+#   skedCustomFormFieldSetting(filter: "Category == 'BillableTravelForm'") {
+#     edges {
+#       node {
+#         Name
+#         DefaultValue
+#         IsVisible
+#         IsEditable
+#         IsRequired
+#       }
+#     }
+#   }
+# }
+# mutation insertSetting {
+#   schema {
+#     i1: insertSkedCustomFormFieldSetting(input: {
+#       Name: "Additional_Travel_Costs",
+#       Category: "BillableTravelForm",
+#       IsVisible: true,
+#       IsEditable: false,
+#       IsRequired: false
+#     })
+#     i2: insertSkedCustomFormFieldSetting(input: {
+#       Name: "Additional_Transport_Costs",
+#       Category: "BillableTravelForm",
+#       IsVisible: true,
+#       IsEditable: false,
+#       IsRequired: false
+#     })
+#     i3: insertSkedCustomFormFieldSetting(input: {
+#       Name: "TFA_Actual_Travel_Distance__c",
+#       Category: "BillableTravelForm",
+#       IsVisible: true,
+#       IsEditable: false,
+#       IsRequired: false
+#     })
+#     i4: insertSkedCustomFormFieldSetting(input: {
+#       Name: "TFA_Actual_Travel_Duration__c",
+#       Category: "BillableTravelForm",
+#       IsVisible: true,
+#       IsEditable: false,
+#       IsRequired: false
+#     })
+#     i5: insertSkedCustomFormFieldSetting(input: {
+#       Name: "TFA_Additional_Costs__c",
+#       Category: "BillableTravelForm",
+#       IsVisible: true,
+#       IsEditable: false,
+#       IsRequired: false
+#     })
+#   }
+# }
+`
+
+export const variables = JSON.stringify({
+  "filterJob": "Name LIKE '% %'"
+})
