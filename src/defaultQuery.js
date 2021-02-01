@@ -95,6 +95,7 @@ query job($filterJob: EQLQueryFilterJobs) {
         Name
         Start
         End
+        Type
         JobStatus
         JobAllocations {
           UID
