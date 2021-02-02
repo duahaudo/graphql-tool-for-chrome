@@ -216,5 +216,5 @@ query job($filterJob: EQLQueryFilterJobs) {
 `
 
 export const variables = JSON.stringify({
-  "filterJob": "Name LIKE '% %'"
+  "filterJob": "Name LIKE '%%'"
 })
