@@ -115,7 +115,20 @@ query job($filterJob: EQLQueryFilterJobs) {
   }
 }
 
-
+query resource {
+  resources(filter: "User.Name LIKE '%Expert%'") {
+    edges {
+      node {
+        UID
+        Name
+        User {
+          Name
+          Email
+        }
+      }
+    }
+  }
+}
 
 
 
