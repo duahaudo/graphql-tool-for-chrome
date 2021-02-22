@@ -115,6 +115,32 @@ query job($filterJob: EQLQueryFilterJobs) {
   }
 }
 
+query jobAllocations {
+  jobAllocations(filter: "ResourceId IN ['a1v6F00000D0eYzQAJ'] OR JobId IN []") {
+    edges {
+      node {
+        UID
+        Name
+        Status
+        Start
+        End
+        Job {
+       		UID
+          Name
+          Start
+          End
+          Type
+          JobStatus
+        }
+        Resource {
+          UID
+          Name
+        }
+      }
+    }
+  }
+}
+
 query resource {
   resources(filter: "User.Name LIKE '%Expert%'") {
     edges {
